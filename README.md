@@ -14,15 +14,15 @@ sudo apt install ros-humble-ros2-control
 sudo apt install ros-humble-ros2-controllers
 sudo apt install ros-humble-gazebo-ros2-control
 ```
-可能有多余的依赖，但不知道是哪些，全装上就是了。
+可能有多余的依赖，但不知道是哪些，全装上。
 ##  构建包
 ```
-mkdir -p bbr_car_ws/src && cd bbr_car_ws/src
-git clone https://github.com/chenanjie233/bbr_car_description.git
+mkdir -p your_ws/src && cd your_ws/src
+git clone https://github.com/fengzhengyong-github/bbr_rob.git
 cd ..
 colcon build
 source install/setup.bash
-ros2 launch bbr_robot_description gazebo_sim.launch.py
+ros2 launch bbr_description gazebo_sim.launch.py
 ```
 可用ros2自带的键盘控制节点控制小车轮子，重新打开一个终端，输入以下命令
 ```
