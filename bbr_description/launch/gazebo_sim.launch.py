@@ -5,15 +5,17 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 def generate_launch_description():
     # 获取默认路径
-    robot_name_in_model = "bbr_car"
-    urdf_tutorial_path = get_package_share_directory('bbr_car')
-    default_model_path = urdf_tutorial_path + '/urdf/bbr_car.xacro'
-    default_rviz_config_path = urdf_tutorial_path + '/config/rviz/gazebo_launch.rviz'
-    default_world_path = urdf_tutorial_path + '/world/custom_room.world'
+    robot_name_in_model = "bbr_rob"
+    urdf_tutorial_path = get_package_share_directory('bbr_rob')
+    default_model_path = urdf_tutorial_path + '/bbr_description/urdf/bbr_rob.xacro'
+    default_rviz_config_path = urdf_tutorial_path + '/bbr_description/config/rviz/gazebo_launch.rviz'
+    default_world_path = urdf_tutorial_path + '/bbr_description/world/custom_room.world'
+   
     # 为 Launch 声明参数
     action_declare_arg_mode_path = launch.actions.DeclareLaunchArgument(
         name='model', default_value=str(default_model_path),
         description='URDF 的绝对路径')
+   
     # 获取文件内容生成新的参数
     robot_description = launch_ros.parameter_descriptions.ParameterValue(
         launch.substitutions.Command(
@@ -39,6 +41,7 @@ def generate_launch_description():
       	# 传递参数
         launch_arguments=[('world', default_world_path),('verbose','true')]
     )
+  
     # 请求 Gazebo 加载机器人
     spawn_entity_node = launch_ros.actions.Node(
         package='gazebo_ros',
