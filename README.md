@@ -20,7 +20,7 @@ sudo apt install ros-humble-gazebo-ros2-control
 mkdir -p your_ws/src && cd your_ws/src
 git clone https://github.com/fengzhengyong-github/bbr_rob.git
 cd ..
-colcon build
+colcon build --symlink-install
 source install/setup.bash
 ros2 launch bbr_description gazebo_sim.launch.py
 ```
